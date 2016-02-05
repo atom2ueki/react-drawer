@@ -1,8 +1,31 @@
 .drawer {
   position: fixed;
   top: 0;
-  right: -20px;
-  width: 200px;
+  right: -50px;
+  width: 350px;
   height: 100%;
-  background-color: #CCCCCC;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
+  -moz-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
+  box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
+  z-index: 999;
+}
+
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.75);
+  z-index: 998;
+}
+
+.button {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: red;
 }
