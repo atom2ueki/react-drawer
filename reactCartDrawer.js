@@ -13,43 +13,40 @@ import './animate.css';
 import './cart-drawer.css';
 
 import React from 'react'
+import classNames from 'classnames'
 
 class CartDrawer extends React.Component {
   constructor() {
     super();
+  }
+
+  componentWillMount() {
     this.state = {
-      showPanel: false,
-      open: false, // status of the drawer
-      transform: 0, // 0: inital close, 1: from open to close, 2: from close to open
-      drawerClass: 'drawer',
+      hiddenOverlay: true,
+      hiddenDrawer: true,
+      showDrawer: false,
       showOverlay: false
     };
     this.handleOperation = this.handleOperation.bind(this);
   }
 
   handleOperation() {
-    this.setState({showPanel: true});
-    if (this.state.transform == 0 || this.state.transform == 1) {
+    this.setState({
+      hiddenOverlay: false,
+      hiddenDrawer: false
+    });
+    if (!this.state.showDrawer) {
       this.setState({
-        transform: 2,
-        drawerClass: 'drawer animated bounceInRight',
+        showDrawer: true,
         showOverlay: true
       });
       console.log("trigger from close to open");
     }else {
       this.setState({
-        transform: 1,
-        drawerClass: 'drawer animated fadeOutRight',
+        showDrawer: false,
         showOverlay: false
       });
       console.log("trigger from open to close");
-    }
-    if (this.state.open == true) {
-      this.setState({open: false});
-      console.log("panel status changed to close");
-    }else {
-      this.setState({open: true});
-      console.log("panel status changed to open");
     }
   }
 
@@ -64,21 +61,36 @@ class CartDrawer extends React.Component {
   }
 
   render() {
+    var overlayClass = classNames({
+      'overlay': true,
+      'hidden': this.state.hiddenOverlay,
+      'animated fadeIn': this.state.showOverlay,
+      'animated fadeOut': !this.state.showOverlay
+    });
+    var drawerClass = classNames({
+      'drawer': true,
+      'hidden': this.state.hiddenDrawer,
+      'animated fadeInRight': this.state.showDrawer,
+      'animated fadeOutRight': !this.state.showDrawer
+    });
     return (
       <div>
-        { this.state.showOverlay? <div className="overlay"></div> : null }
-        <div className="button" onClick={this.handleOperation}>test test test</div>
-        { this.state.showPanel?
-          <div className={this.state.drawerClass}>
-            <i onClick={this.handleOperation} className="icono-cross"></i>
-            {this.props.children}
-          </div> : null }
+        <div className="button" onClick={this.handleOperation}>this is a button</div>
+        <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
+        <div className={drawerClass}>
+          <i onClick={this.handleOperation} className="icono-cross"></i>
+          {this.props.children}
+        </div>
       </div>
     );
   }
 
   componentDidMount () {
-
+    document.getElementById("overlay").addEventListener("webkitAnimationEnd", ()=>{
+      if(!this.state.showOverlay) {
+        this.setState({hiddenOverlay: true});
+      }
+    });
   }
 }
 
