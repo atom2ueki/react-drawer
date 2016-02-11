@@ -28,12 +28,3 @@
   -webkit-animation-duration: 0.4s; /* Chrome, Safari, Opera */
   animation-duration: 0.2s;
 }
-
-.button {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: red;
-}

@@ -15,7 +15,7 @@ import './cart-drawer.css';
 import React from 'react'
 import classNames from 'classnames'
 
-class CartDrawer extends React.Component {
+export default class DrawerReact extends React.Component {
   constructor() {
     super();
   }
@@ -55,9 +55,7 @@ class CartDrawer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // var drawerClass = this.state.transform == 0 ? 'drawer' :
-    //   this.state.transform == 1 && this.state.open ? 'drawer animated fadeOutRight' :
-    //   'drawer animated bounceInRight';
+
   }
 
   render() {
@@ -75,7 +73,7 @@ class CartDrawer extends React.Component {
     });
     return (
       <div>
-        <div className="button" onClick={this.handleOperation}>this is a button</div>
+        // <div className="button" onClick={this.handleOperation}>this is a button</div>
         <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
         <div className={drawerClass}>
           <i onClick={this.handleOperation} className="icono-cross"></i>
@@ -94,6 +92,10 @@ class CartDrawer extends React.Component {
   }
 }
 
+// class Drawer extends React.Component {
+//
+// }
+
 // CartDrawer.propTypes = {
 //   open: React.PropTypes.bool.isRequired,
 //   transform: React.PropTypes.number.isRequired
@@ -104,4 +106,5 @@ class CartDrawer extends React.Component {
 //   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open
 // };
 
-export default CartDrawer
+// export default Drawer
+// export {Drawer, handleOperation as Operation}

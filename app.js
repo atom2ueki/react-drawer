@@ -5,17 +5,21 @@
  *
  */
 "use strict";
+import './app.css'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import CartDrawer from './reactCartDrawer'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import DrawerReact from './DrawerReact'
 
-class Main extends React.Component {
+class Main extends DrawerReact {
   render() {
     return (
-      <CartDrawer>
-        <h2>djoisajdioas</h2>
-      </CartDrawer>
+      <div>
+        <div className="button" onClick={this.handleOperation}>this is a button</div>
+        <DrawerReact>
+          <h2>djoisajdioas</h2>
+        </DrawerReact>
+      </div>
     )
   }
 };
