@@ -1,0 +1,16 @@
+{
+  "name": "react-drawer-test",
+  "version": "1.0.0",
+  "description": "demo for react-drawer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tony Li",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-drawer": "file:../"
+  }
+}

@@ -4,18 +4,17 @@ var webpack = require('webpack');
 const path = require('path');
 
 const PATHS = {
-  app: path.join(__dirname, './'),
-  public: path.join(__dirname, './')
+  test: path.join(__dirname, './test')
 };
 
 module.exports = {
-  entry: "./app.js",
+  entry: path.join(PATHS.test, 'app.js'),
   output: {
     filename: "bundle.js",
-    path: './'
+    path: PATHS.test
   },
   devServer: {
-    contentBase: PATHS.public,
+    contentBase: PATHS.test,
     inline: true,
     port: 3000,
   },

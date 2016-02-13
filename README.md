@@ -1,2 +1,2 @@
-# react-cart-drawer
-shopfiy liked shopping cart drawer
+# react-drawer
+drawer component for react

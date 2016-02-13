@@ -1,21 +1,19 @@
-/**
- * This is a thrid party component created by Tony Li
+/*!
+ * ReactDrawer
+ * Version - 1.0.0
+ * Licensed under the MIT license
  *
- * all right reserved by @author Tony Li
- *
+ * Copyright (c) 2016 Tony Li
  */
 
-// click outside panel -- how to do
-// http://stackoverflow.com/questions/23821768/listen-for-click-events-that-are-outside-of-a-component
-
 "use strict";
-import './animate.css';
-import './cart-drawer.css';
+import './css/animate.css';
+import './css/drawer.css';
 
-import React from 'react'
+import React from 'react';
 import classNames from 'classnames'
 
-export default class DrawerReact extends React.Component {
+class ReactDrawer extends React.Component {
   constructor() {
     super();
   }
@@ -35,6 +33,9 @@ export default class DrawerReact extends React.Component {
       hiddenOverlay: false,
       hiddenDrawer: false
     });
+
+    console.log(this.state.hiddenOverlay);
+
     if (!this.state.showDrawer) {
       this.setState({
         showDrawer: true,
@@ -59,21 +60,20 @@ export default class DrawerReact extends React.Component {
   }
 
   render() {
-    var overlayClass = classNames({
-      'overlay': true,
-      'hidden': this.state.hiddenOverlay,
+    var overlayClass = classNames('overlay', {
       'animated fadeIn': this.state.showOverlay,
-      'animated fadeOut': !this.state.showOverlay
+      'animated fadeOut': !this.state.showOverlay,
+      'hidden': this.state.hiddenOverlay
     });
-    var drawerClass = classNames({
-      'drawer': true,
-      'hidden': this.state.hiddenDrawer,
+
+    var drawerClass = classNames('drawer', {
       'animated fadeInRight': this.state.showDrawer,
-      'animated fadeOutRight': !this.state.showDrawer
+      'animated fadeOutRight': !this.state.showDrawer,
+      'hidden': this.state.hiddenDrawer
     });
+
     return (
       <div>
-        // <div className="button" onClick={this.handleOperation}>this is a button</div>
         <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
         <div className={drawerClass}>
           <i onClick={this.handleOperation} className="icono-cross"></i>
@@ -92,19 +92,14 @@ export default class DrawerReact extends React.Component {
   }
 }
 
-// class Drawer extends React.Component {
-//
-// }
-
-// CartDrawer.propTypes = {
+// ReactDrawer.propTypes = {
 //   open: React.PropTypes.bool.isRequired,
 //   transform: React.PropTypes.number.isRequired
 // };
-
-// CartDrawer.defaultProps = {
+//
+// ReactDrawer.defaultProps = {
 //   open: false, // default status of the drawer
 //   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open
 // };
 
-// export default Drawer
-// export {Drawer, handleOperation as Operation}
+export default ReactDrawer
