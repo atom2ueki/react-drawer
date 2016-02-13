@@ -4,7 +4,7 @@ var webpack = require('webpack');
 const path = require('path');
 
 const PATHS = {
-  test: path.join(__dirname, './test')
+  test: path.join(__dirname, './example')
 };
 
 module.exports = {
