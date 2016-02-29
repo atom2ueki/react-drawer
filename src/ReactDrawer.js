@@ -20,10 +20,9 @@ class ReactDrawer extends React.Component {
 
   componentWillMount() {
     this.state = {
+      open: this.props.open,
       hiddenOverlay: true,
-      hiddenDrawer: true,
-      showDrawer: false,
-      showOverlay: false
+      hiddenDrawer: true
     };
     this.handleOperation = this.handleOperation.bind(this);
   }
@@ -34,41 +33,34 @@ class ReactDrawer extends React.Component {
       hiddenDrawer: false
     });
 
-    console.log(this.state.hiddenOverlay);
+    this.setState({
+      open: !this.state.open
+    });
+  }
 
-    if (!this.state.showDrawer) {
-      this.setState({
-        showDrawer: true,
-        showOverlay: true
-      });
-      console.log("trigger from close to open");
+  componentWillUnmount() {
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.open != this.state.open) {
+      this.handleOperation();
+      this.setState({open: nextProps.open});
     }else {
-      this.setState({
-        showDrawer: false,
-        showOverlay: false
-      });
-      console.log("trigger from open to close");
+      this.handleOperation();
     }
-  }
-
-  componentWillUnmount () {
-
-  }
-
-  componentWillReceiveProps(nextProps){
-
   }
 
   render() {
     var overlayClass = classNames('overlay', {
-      'animated fadeIn': this.state.showOverlay,
-      'animated fadeOut': !this.state.showOverlay,
+      'animated fadeIn': this.state.open,
+      'animated fadeOut': !this.state.open,
       'hidden': this.state.hiddenOverlay
     });
 
     var drawerClass = classNames('drawer', {
-      'animated fadeInRight': this.state.showDrawer,
-      'animated fadeOutRight': !this.state.showDrawer,
+      'animated fadeInRight': this.state.open,
+      'animated fadeOutRight': !this.state.open,
       'hidden': this.state.hiddenDrawer
     });
 
@@ -76,7 +68,6 @@ class ReactDrawer extends React.Component {
       <div>
         <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
         <div className={drawerClass}>
-          <i onClick={this.handleOperation} className="icono-cross"></i>
           {this.props.children}
         </div>
       </div>
@@ -85,18 +76,17 @@ class ReactDrawer extends React.Component {
 
   componentDidMount () {
     document.getElementById("overlay").addEventListener("webkitAnimationEnd", ()=>{
-      if(!this.state.showOverlay) {
+      if(!this.state.open) {
         this.setState({hiddenOverlay: true});
       }
     });
   }
 }
 
-// ReactDrawer.propTypes = {
-//   open: React.PropTypes.bool.isRequired,
-//   transform: React.PropTypes.number.isRequired
-// };
-//
+ReactDrawer.propTypes = {
+  open: React.PropTypes.bool.isRequired
+};
+
 // ReactDrawer.defaultProps = {
 //   open: false, // default status of the drawer
 //   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open

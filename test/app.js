@@ -9,13 +9,16 @@ import './app.css'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDrawer from 'react-drawer';
-// import ReactDrawer from '../src/ReactDrawer';
+// import ReactDrawer from 'react-drawer';
+import ReactDrawer from '../src/ReactDrawer';
 // var ReactDrawerComponent = ReactDrawer(React);
 
 class Main extends React.Component {
   constructor() {
     super();
+    this.state = {
+      open: false
+    };
     this.manpulate = this.manpulate.bind(this);
   }
 
@@ -23,7 +26,9 @@ class Main extends React.Component {
     return (
       <div>
         <div className="button" onClick={this.manpulate}>this is a button</div>
-        <ReactDrawer ref='Drawer'>
+        <ReactDrawer
+          open={this.state.open}>
+          <i onClick={this.manpulate} className="icono-cross"></i>
           <h2>djoisajdioas</h2>
         </ReactDrawer>
       </div>
@@ -31,7 +36,7 @@ class Main extends React.Component {
   }
 
   manpulate() {
-    this.refs.Drawer.handleOperation()
+    this.setState({open: !this.state.open});
   }
 };
 
