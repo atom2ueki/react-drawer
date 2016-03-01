@@ -5,7 +5,7 @@
   "main": "./lib/ReactDrawer.js",
   "scripts": {
     "demo": "webpack-dev-server",
-    "build": "babel ./src --out-dir ./lib && cp -r ./src/css ./lib/css"
+    "build": "rm -r ./lib/* && babel ./src --out-dir ./lib && cp -r ./src/css ./lib/css"
   },
   "repository": {
     "type": "git",
