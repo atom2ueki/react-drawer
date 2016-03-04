@@ -61,7 +61,7 @@ Todo
 - [x] basic features
 - [ ] open position option
 - [ ] drawer size option
-- [ ] drawer open method
+- [x] drawer open method
 - [ ] responsive design
 
 License
