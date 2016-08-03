@@ -11,6 +11,11 @@ import React from 'react';
 import classNames from 'classnames';
 
 class ReactDrawer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.onAnimationEnded = this.onAnimationEnded.bind(this);
+  }
 
   onAnimationEnded() {
     if (!this.state.open) {
@@ -24,10 +29,9 @@ class ReactDrawer extends React.Component {
       hiddenOverlay: true,
       hiddenDrawer: true
     };
-    this.handleOperation = this.handleOperation.bind(this);
   }
 
-  handleOperation() {
+  toggleDrawer() {
     this.setState({
       hiddenOverlay: false,
       hiddenDrawer: false
@@ -40,10 +44,10 @@ class ReactDrawer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.open != this.state.open) {
-      this.handleOperation();
+      this.toggleDrawer();
       this.setState({open: nextProps.open});
     } else {
-      this.handleOperation();
+      this.toggleDrawer();
     }
   }
 
@@ -56,21 +60,21 @@ class ReactDrawer extends React.Component {
   }
 
   render() {
-    var overlayClass = classNames(theme.overlay, {
-      'animated fadeIn': this.state.open,
-      'animated fadeOut': !this.state.open,
-      [theme.hidden]: this.state.hiddenOverlay
+    var overlayClass = classNames(theme.overlay, 'animated', {
+      'fadeIn': this.state.open,
+      'fadeOut': !this.state.open,
+      [`${theme.hidden}`]: this.state.hiddenOverlay
     });
 
-    var drawerClass = classNames(theme.drawer, {
-      'animated fadeInRight': this.state.open,
-      'animated fadeOutRight': !this.state.open,
-      [theme.hidden]: this.state.hiddenDrawer
+    var drawerClass = classNames(theme.drawer, 'animated', {
+      'fadeInRight': this.state.open,
+      'fadeOutRight': !this.state.open,
+      [`${theme.hidden}`]: this.state.hiddenDrawer
     });
 
     return (
       <div>
-        <div ref={(c) => this.overlay = c} className={overlayClass} onClick={this.handleOperation}></div>
+        <div ref={(c) => this.overlay = c} className={overlayClass} onClick={this.toggleDrawer}></div>
         <div className={drawerClass}>
           {this.props.children}
         </div>
