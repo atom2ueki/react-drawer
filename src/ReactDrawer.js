@@ -6,7 +6,7 @@
  */
 
 import theme from './ReactDrawer.scss';
-import 'animate.css';
+import animate from 'animate.css';
 import React from 'react';
 import classNames from 'classnames';
 
@@ -60,17 +60,27 @@ class ReactDrawer extends React.Component {
   }
 
   render() {
-    var overlayClass = classNames(theme.overlay, 'animated', {
-      'fadeIn': this.state.open,
-      'fadeOut': !this.state.open,
-      [`${theme.hidden}`]: this.state.hiddenOverlay
-    });
+    var overlayClass = classNames(
+      'react-drawer-overlay',
+      theme.overlay,
+      animate.animated,
+      {
+        [`${animate.fadeIn}`]: this.state.open,
+        [`${animate.fadeOut}`]: !this.state.open,
+        [`${theme.hidden}`]: this.state.hiddenOverlay
+      }
+    );
 
-    var drawerClass = classNames(theme.drawer, 'animated', {
-      'fadeInRight': this.state.open,
-      'fadeOutRight': !this.state.open,
-      [`${theme.hidden}`]: this.state.hiddenDrawer
-    });
+    var drawerClass = classNames(
+      'react-drawer-drawer',
+      theme.drawer,
+      animate.animated,
+      {
+        [`${animate.fadeInRight}`]: this.state.open,
+        [`${animate.fadeOutRight}`]: !this.state.open,
+        [`${theme.hidden}`]: this.state.hiddenDrawer
+      }
+    );
 
     return (
       <div>
