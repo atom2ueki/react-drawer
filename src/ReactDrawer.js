@@ -1,21 +1,19 @@
 /*!
  * ReactDrawer
- * Version - 1.0.0
  * Licensed under the MIT license
  *
  * Copyright (c) 2016 Tony Li
  */
 
-"use strict";
 import theme from './ReactDrawer.scss';
 import 'animate.css';
 import React from 'react';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 class ReactDrawer extends React.Component {
 
   onAnimationEnded() {
-    if(!this.state.open) {
+    if (!this.state.open) {
       this.setState({hiddenOverlay: true});
     }
   }
@@ -50,11 +48,11 @@ class ReactDrawer extends React.Component {
   }
 
   componentDidMount () {
-    this.overlay.addEventListener("webkitAnimationEnd", this.onAnimationEnded);
+    this.overlay.addEventListener('webkitAnimationEnd', this.onAnimationEnded);
   }
 
   componentWillUnmount() {
-    this.overlay.removeEventListener("webkitAnimationEnd", this.onAnimationEnded);
+    this.overlay.removeEventListener('webkitAnimationEnd', this.onAnimationEnded);
   }
 
   render() {
@@ -91,4 +89,4 @@ ReactDrawer.propTypes = {
 //   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open
 // };
 
-export default ReactDrawer
+export default ReactDrawer;
