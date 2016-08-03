@@ -7,15 +7,17 @@
  */
 
 "use strict";
-import './css/animate.css';
-import './css/drawer.css';
-
+import theme from './ReactDrawer.scss';
+import 'animate.css';
 import React from 'react';
 import classNames from 'classnames'
 
 class ReactDrawer extends React.Component {
-  constructor() {
-    super();
+
+  onAnimationEnded() {
+    if(!this.state.open) {
+      this.setState({hiddenOverlay: true});
+    }
   }
 
   componentWillMount() {
@@ -38,35 +40,39 @@ class ReactDrawer extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-
-  }
-
   componentWillReceiveProps(nextProps) {
-    if(nextProps.open != this.state.open) {
+    if (nextProps.open != this.state.open) {
       this.handleOperation();
       this.setState({open: nextProps.open});
-    }else {
+    } else {
       this.handleOperation();
     }
   }
 
+  componentDidMount () {
+    this.overlay.addEventListener("webkitAnimationEnd", this.onAnimationEnded);
+  }
+
+  componentWillUnmount() {
+    this.overlay.removeEventListener("webkitAnimationEnd", this.onAnimationEnded);
+  }
+
   render() {
-    var overlayClass = classNames('overlay', {
+    var overlayClass = classNames(theme.overlay, {
       'animated fadeIn': this.state.open,
       'animated fadeOut': !this.state.open,
-      'hidden': this.state.hiddenOverlay
+      [theme.hidden]: this.state.hiddenOverlay
     });
 
-    var drawerClass = classNames('drawer', {
+    var drawerClass = classNames(theme.drawer, {
       'animated fadeInRight': this.state.open,
       'animated fadeOutRight': !this.state.open,
-      'hidden': this.state.hiddenDrawer
+      [theme.hidden]: this.state.hiddenDrawer
     });
 
     return (
       <div>
-        <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
+        <div ref={(c) => this.overlay = c} className={overlayClass} onClick={this.handleOperation}></div>
         <div className={drawerClass}>
           {this.props.children}
         </div>
@@ -74,13 +80,6 @@ class ReactDrawer extends React.Component {
     );
   }
 
-  componentDidMount () {
-    document.getElementById("overlay").addEventListener("webkitAnimationEnd", ()=>{
-      if(!this.state.open) {
-        this.setState({hiddenOverlay: true});
-      }
-    });
-  }
 }
 
 ReactDrawer.propTypes = {

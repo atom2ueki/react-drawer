@@ -3,18 +3,20 @@ var webpack = require('webpack');
 
 const path = require('path');
 
-const PATHS = {
-  test: path.join(__dirname, './example')
+const PATH = {
+  src: path.join(__dirname, './src'),
+  lib: path.join(__dirname, './lib'),
+  dist: path.join(__dirname, './dist'),
+  example: path.join(__dirname, './example'),
+  root: path.join(__dirname, './'),
 };
-
-module.exports = {
-  entry: path.join(PATHS.test, 'app.js'),
-  output: {
-    filename: "bundle.js",
-    path: PATHS.test
+const CONFIG = {
+  entry: path.join(PATH.src, 'ReactDrawer.js'),
+  externals: {
+    'react': 'React'
   },
   devServer: {
-    contentBase: PATHS.test,
+    contentBase: PATH.root,
     inline: true,
     port: 3000,
   },
@@ -28,8 +30,11 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       }, {
-        test: /\.css$/, // Only .css files
-        loader: 'style!css' // Run both loaders
+        test: /\.css$/,
+        loader: 'style!css'
+      }, {
+        test: /\.scss$/,
+        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'
       },
       {
         test: /\.(png|jpg)$/,
@@ -38,3 +43,30 @@ module.exports = {
     ]
   }
 }
+const umd = Object.assign({}, CONFIG, {
+  output: {
+    libraryTarget: 'umd',
+    library: 'react-drawer',
+    filename: "react-drawer.js",
+    path: PATH.lib
+  }
+});
+const script = Object.assign({}, CONFIG, {
+  output: {
+    libraryTarget: 'var',
+    library: 'ReactDrawer',
+    filename: "react-drawer.js",
+    path: PATH.dist
+  }
+});
+const example = Object.assign({}, CONFIG, {
+  entry: path.join(PATH.example, 'app.js'),
+  output: {
+    filename: 'example.js',
+    path: PATH.example
+  },
+  externals: {
+    'react-drawer': 'umd'
+  }
+});
+module.exports = [script, umd, example];

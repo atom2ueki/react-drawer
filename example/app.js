@@ -9,7 +9,7 @@ import './app.css'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDrawer from 'react-drawer';
+import ReactDrawer from '../src/ReactDrawer';
 // import ReactDrawer from '../src/ReactDrawer';
 // var ReactDrawerComponent = ReactDrawer(React);
 

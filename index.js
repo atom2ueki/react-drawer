@@ -1,1 +1,1 @@
-module.exports = require('./libs/ReactDrawer')
+module.exports = require('./lib/react-drawer');

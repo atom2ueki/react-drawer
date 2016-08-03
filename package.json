@@ -2,10 +2,10 @@
   "name": "react-drawer",
   "version": "1.1.0",
   "description": "react drawer menu",
-  "main": "./lib/ReactDrawer.js",
+  "main": "./lib/react-drawer.js",
   "scripts": {
     "demo": "webpack-dev-server",
-    "build": "rm -r ./lib/* && babel ./src --out-dir ./lib && cp -r ./src/css ./lib/css"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "react": "^0.14.7 || ^15.0.0"
   },
   "devDependencies": {
+    "animate.css": "^3.5.1",
     "babel-cli": "^6.0.0",
     "babel-core": "^6.1.4",
     "babel-loader": "^6.2.0",
@@ -31,8 +32,10 @@
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "node-sass": "^3.8.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "sass-loader": "^4.0.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.11",
