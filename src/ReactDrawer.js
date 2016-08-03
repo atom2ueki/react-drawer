@@ -43,11 +43,9 @@ class ReactDrawer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.toggleDrawer();
     if (nextProps.open != this.state.open) {
-      this.toggleDrawer();
       this.setState({open: nextProps.open});
-    } else {
-      this.toggleDrawer();
     }
   }
 
