@@ -4,6 +4,12 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
+    "globals": {
+      "jest": true,
+      "expect": true,
+      "it": true,
+      "describe": true
+    },
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaFeatures": {
