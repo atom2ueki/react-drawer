@@ -31,3 +31,10 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+/test
+/lib
+/example/lib
+/example/style.css
+/example/example.js
+/gh-pages
