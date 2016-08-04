@@ -83,7 +83,7 @@ ReactDOM.render(<Main />, document.getElementById('app'));
 Todo
 ========
 - [x] basic features
-- [ ] open position option
+- [x] open position option
 - [ ] drawer size option
 - [x] drawer open method
 - [ ] responsive design
