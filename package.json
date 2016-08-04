@@ -7,7 +7,9 @@
     "demo": "webpack-dev-server",
     "build": "webpack",
     "lint": "./node_modules/.bin/eslint src/",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
