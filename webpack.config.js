@@ -1,6 +1,7 @@
 const path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const PATH = {
   src: path.join(__dirname, './src'),
@@ -12,6 +13,9 @@ const PATH = {
 const css = 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
 const sass = `${css}!sass`;
 const extractCSS = new ExtractTextPlugin('style.css', {allChunks: true});
+const uglify = new webpack.optimize.UglifyJsPlugin();
+
+
 var copyLib = new CopyPlugin([
   { from: 'lib', to: 'lib' },
   { from: 'coverage/lcov-report', 'to': 'coverage'}
@@ -61,6 +65,15 @@ const umd = Object.assign({}, CONFIG, {
     'animate.css': 'var'
   }
 });
+const umdMinified = Object.assign({}, umd, {
+  output: {
+    libraryTarget: 'umd',
+    library: 'ReactDrawer',
+    filename: 'react-drawer.min.js',
+    path: PATH.lib
+  },
+  plugins: [extractCSS, uglify]
+});
 const example = Object.assign({}, CONFIG, {
   entry: path.join(PATH.example, 'app.js'),
   output: {
@@ -77,4 +90,4 @@ const example = Object.assign({}, CONFIG, {
   },
   plugins: [extractCSS, copyLib]
 });
-module.exports = [umd, example];
+module.exports = [umd, umdMinified, example];
