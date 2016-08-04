@@ -1,15 +1,18 @@
-var WebpackDevServer = require("webpack-dev-server");
-var webpack = require('webpack');
-
 const path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyPlugin = require('copy-webpack-plugin');
 
 const PATH = {
   src: path.join(__dirname, './src'),
   lib: path.join(__dirname, './lib'),
   dist: path.join(__dirname, './dist'),
   example: path.join(__dirname, './example'),
-  root: path.join(__dirname, './'),
+  root: path.join(__dirname, './')
 };
+const css = 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
+const sass = `${css}!sass`;
+const extractCSS = new ExtractTextPlugin('style.css', {allChunks: true});
+var copyLib = new CopyPlugin([{ from: 'lib', to: 'lib' }]);
 const CONFIG = {
   entry: path.join(PATH.src, 'ReactDrawer.js'),
   externals: {
@@ -18,7 +21,7 @@ const CONFIG = {
   devServer: {
     contentBase: PATH.root,
     inline: true,
-    port: 3000,
+    port: 3000
   },
   module: {
     loaders: [
@@ -31,32 +34,28 @@ const CONFIG = {
         }
       }, {
         test: /\.css$/,
-        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        loader: extractCSS.extract('style', css)
       }, {
         test: /\.scss$/,
-        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'
+        loader: extractCSS.extract('style', sass)
       },
       {
         test: /\.(png|jpg)$/,
         loader: 'file-loader'
       }
     ]
-  }
-}
+  },
+  plugins: [extractCSS]
+};
 const umd = Object.assign({}, CONFIG, {
   output: {
     libraryTarget: 'umd',
-    library: 'react-drawer',
-    filename: "react-drawer.js",
-    path: PATH.lib
-  }
-});
-const script = Object.assign({}, CONFIG, {
-  output: {
-    libraryTarget: 'var',
     library: 'ReactDrawer',
-    filename: "react-drawer.js",
-    path: PATH.dist
+    filename: 'react-drawer.js',
+    path: PATH.lib
+  },
+  globals: {
+    'animate.css': 'var'
   }
 });
 const example = Object.assign({}, CONFIG, {
@@ -65,8 +64,14 @@ const example = Object.assign({}, CONFIG, {
     filename: 'example.js',
     path: PATH.example
   },
-  externals: {
-    'react-drawer': 'umd'
-  }
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-drawer': 'ReactDrawer'
+  },
+  globals: {
+    'animate.css': 'var'
+  },
+  plugins: [extractCSS, copyLib]
 });
-module.exports = [script, umd, example];
+module.exports = [umd, example];

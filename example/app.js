@@ -4,11 +4,9 @@
  * all right reserved by @author Tony Li
  *
  */
-import './app.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDrawer from '../src/ReactDrawer';
+import ReactDrawer from 'react-drawer';
 // import ReactDrawer from '../src/ReactDrawer';
 // var ReactDrawerComponent = ReactDrawer(React);
 
@@ -59,7 +57,7 @@ class Main extends React.Component {
             <input type="checkbox"
               checked={this.state.noOverlay}
               onChange={this.setNoOverlay}
-              defaultChecked={false}/>
+            />
             <label>No overlay</label>
             <small>(The overlay lets you close the drawer on click)</small>
           </div>
