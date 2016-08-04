@@ -12,7 +12,10 @@ const PATH = {
 const css = 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
 const sass = `${css}!sass`;
 const extractCSS = new ExtractTextPlugin('style.css', {allChunks: true});
-var copyLib = new CopyPlugin([{ from: 'lib', to: 'lib' }]);
+var copyLib = new CopyPlugin([
+  { from: 'lib', to: 'lib' },
+  { from: 'coverage/lcov-report', 'to': 'coverage'}
+]);
 const CONFIG = {
   entry: path.join(PATH.src, 'ReactDrawer.js'),
   externals: {
