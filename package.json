@@ -9,7 +9,8 @@
     "lint": "./node_modules/.bin/eslint src/",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "prepublish": "webpack"
   },
   "repository": {
     "type": "git",
