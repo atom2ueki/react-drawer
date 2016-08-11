@@ -1,18 +1,15 @@
 /*!
  * drawer.css
- * Version - 1.0.0
  * Licensed under the MIT license
  *
  * Copyright (c) 2016 Tony Li
  */
 
+$size: 300px;
+
 .drawer {
   position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background-color: #FFFFFF;
+  background-color: #FFF;
   -webkit-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
   -moz-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
   box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
@@ -20,6 +17,37 @@
   -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
   animation-duration: 0.5s;
 }
+
+.drawer-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $size;
+}
+
+.drawer-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $size;
+}
+
+.drawer-left {
+  top: 0;
+  left: 0;
+  width: $size;
+  height: 100%;
+}
+
+.drawer-right {
+  top: 0;
+  right: 0;
+  width: $size;
+  height: 100%;
+}
+
 
 .hidden {
   display: none;

@@ -3,6 +3,26 @@ react-drawer
 
 Simple HTML5 drawer menu for React.js.
 
+[![NPM][npm-icon] ][npm-url]
+
+[![Travis CI][travis-ci-image] ][travis-ci-url]
+[![Quality][quality-badge] ][quality-url]
+[![dependencies][dependencies-image] ][dependencies-url]
+[![devdependencies][devdependencies-image] ][devdependencies-url]
+
+[npm-icon]: https://nodei.co/npm/react-drawer.png?downloads=true
+[npm-url]: https://npmjs.org/package/react-drawer
+[travis-ci-image]: https://travis-ci.org/jmfrancois/react-drawer.svg?branch=master
+[travis-ci-url]: https://travis-ci.org/jmfrancois/react-drawer
+
+[dependencies-image]: https://david-dm.org/atom2ueki/react-drawer.png
+[dependencies-url]: https://david-dm.org/atom2ueki/react-drawer
+[devdependencies-image]: https://david-dm.org/atom2ueki/react-drawer/dev-status.png
+[devdependencies-url]: https://david-dm.org/atom2ueki/react-drawer#info=devDependencies
+
+[quality-badge]: http://npm.packagequality.com/shield/react-drawer.svg
+[quality-url]: http://packagequality.com/#?package=react-drawer
+
 Installation
 ============
 
@@ -63,7 +83,7 @@ ReactDOM.render(<Main />, document.getElementById('app'));
 Todo
 ========
 - [x] basic features
-- [ ] open position option
+- [x] open position option
 - [ ] drawer size option
 - [x] drawer open method
 - [ ] responsive design

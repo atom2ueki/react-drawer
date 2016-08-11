@@ -1,21 +1,31 @@
 /*!
  * ReactDrawer
- * Version - 1.0.0
  * Licensed under the MIT license
  *
  * Copyright (c) 2016 Tony Li
  */
 
-"use strict";
-import './css/animate.css';
-import './css/drawer.css';
-
+import theme from './ReactDrawer.scss';
+import animate from 'animate.css';
 import React from 'react';
-import classNames from 'classnames'
+import classNames from 'classnames';
+
 
 class ReactDrawer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.openDrawer = this.openDrawer.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
+    this.onAnimationEnded = this.onAnimationEnded.bind(this);
+  }
+
+  onAnimationEnded() {
+    if (!this.state.open) {
+      this.setState({
+        hiddenOverlay: true,
+        hiddenDrawer: true
+      });
+    }
   }
 
   componentWillMount() {
@@ -24,67 +34,120 @@ class ReactDrawer extends React.Component {
       hiddenOverlay: true,
       hiddenDrawer: true
     };
-    this.handleOperation = this.handleOperation.bind(this);
   }
 
-  handleOperation() {
+  closeDrawer() {
+    this.setState({
+      open: false
+    });
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  }
+  openDrawer() {
     this.setState({
       hiddenOverlay: false,
-      hiddenDrawer: false
+      hiddenDrawer: false,
+      open: true
     });
-
-    this.setState({
-      open: !this.state.open
-    });
-  }
-
-  componentWillUnmount() {
-
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.open != this.state.open) {
-      this.handleOperation();
-      this.setState({open: nextProps.open});
-    }else {
-      this.handleOperation();
+    if (nextProps.open != this.state.open) {
+      nextProps.open ? this.openDrawer(): this.closeDrawer();
     }
   }
 
-  render() {
-    var overlayClass = classNames('overlay', {
-      'animated fadeIn': this.state.open,
-      'animated fadeOut': !this.state.open,
-      'hidden': this.state.hiddenOverlay
-    });
+  componentDidMount () {
+    this.drawer.addEventListener('webkitAnimationEnd', this.onAnimationEnded);
+  }
 
-    var drawerClass = classNames('drawer', {
-      'animated fadeInRight': this.state.open,
-      'animated fadeOutRight': !this.state.open,
-      'hidden': this.state.hiddenDrawer
-    });
+  componentWillUnmount() {
+    this.drawer.removeEventListener('webkitAnimationEnd', this.onAnimationEnded);
+  }
+
+  getOverlayClassName(theme, animate) {
+    return classNames(
+      'react-drawer-overlay',
+      theme.overlay,
+      animate.animated,
+      {
+        [`${animate.fadeIn}`]: this.state.open,
+        [`${animate.fadeOut}`]: !this.state.open,
+        [`${theme.hidden}`]: this.state.hiddenOverlay
+      }
+    );
+  }
+
+  getDrawerClassName(theme, animate) {
+    const position = this.props.position || 'right';
+    const themeAttr = `drawer-${position}`;
+    const drawerTheme = theme[themeAttr];
+    let direction, start;
+    if (this.state.open) {
+      direction = 'In';
+      switch(position) {
+      case 'top':
+        start = 'Down'; break;
+      case 'bottom':
+        start = 'Up'; break;
+      case 'left':
+        start = 'Left'; break;
+      case 'right':
+        start = 'Right'; break;
+      }
+    } else {
+      direction = 'Out';
+      switch(position) {
+      case 'top':
+        start = 'Up'; break;
+      case 'bottom':
+        start = 'Down'; break;
+      case 'left':
+        start = 'Left'; break;
+      case 'right':
+        start = 'Right'; break;
+      }
+    }
+    const fade = animate[`fade${direction}${start}`];
+    return classNames(
+      'react-drawer-drawer',
+      theme.drawer,
+      drawerTheme,
+      animate.animated,
+      fade,
+      {
+        [`${theme.hidden}`]: this.state.hiddenDrawer
+      }
+    );
+  }
+  render() {
+    const overlayClass = this.getOverlayClassName(theme, animate);
+    const drawerClass = this.getDrawerClassName(theme, animate);
 
     return (
       <div>
-        <div id="overlay" className={overlayClass} onClick={this.handleOperation}></div>
-        <div className={drawerClass}>
+        {!this.props.noOverlay ? <div
+          ref={(c) => this.overlay = c}
+          className={overlayClass}
+          onClick={this.closeDrawer}>
+        </div>: null}
+        <div
+          className={drawerClass}
+          ref={(c) => this.drawer = c}>
           {this.props.children}
         </div>
       </div>
     );
   }
 
-  componentDidMount () {
-    document.getElementById("overlay").addEventListener("webkitAnimationEnd", ()=>{
-      if(!this.state.open) {
-        this.setState({hiddenOverlay: true});
-      }
-    });
-  }
 }
 
 ReactDrawer.propTypes = {
-  open: React.PropTypes.bool.isRequired
+  open: React.PropTypes.bool.isRequired,
+  onClose: React.PropTypes.func,
+  position: React.PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
+  noOverlay: React.PropTypes.bool
 };
 
 // ReactDrawer.defaultProps = {
@@ -92,4 +155,4 @@ ReactDrawer.propTypes = {
 //   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open
 // };
 
-export default ReactDrawer
+export default ReactDrawer;
