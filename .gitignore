@@ -33,7 +33,7 @@ node_modules
 .node_repl_history
 
 /test
-/lib
+#/lib
 /example/lib
 /example/style.css
 /example/example.js
