@@ -1,6 +1,6 @@
 {
   "name": "react-drawer",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "react drawer menu",
   "main": "./lib/react-drawer.js",
   "scripts": {
