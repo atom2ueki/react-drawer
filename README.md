@@ -15,9 +15,9 @@ Simple HTML5 drawer menu for React.js.
 [travis-ci-image]: https://travis-ci.org/jmfrancois/react-drawer.svg?branch=master
 [travis-ci-url]: https://travis-ci.org/jmfrancois/react-drawer
 
-[dependencies-image]: https://david-dm.org/atom2ueki/react-drawer.png
+[dependencies-image]: https://david-dm.org/atom2ueki/react-drawer/status.svg
 [dependencies-url]: https://david-dm.org/atom2ueki/react-drawer
-[devdependencies-image]: https://david-dm.org/atom2ueki/react-drawer/dev-status.png
+[devdependencies-image]: https://david-dm.org/atom2ueki/react-drawer/dev-status.svg
 [devdependencies-url]: https://david-dm.org/atom2ueki/react-drawer#info=devDependencies
 
 [quality-badge]: http://npm.packagequality.com/shield/react-drawer.svg
