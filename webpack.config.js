@@ -10,7 +10,7 @@ const PATH = {
   example: path.join(__dirname, './example'),
   root: path.join(__dirname, './')
 };
-const css = 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
+const css = 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]';
 const sass = `${css}!sass`;
 const extractCSS = new ExtractTextPlugin('style.css', {allChunks: true});
 const uglify = new webpack.optimize.UglifyJsPlugin();
