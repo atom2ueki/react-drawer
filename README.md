@@ -51,6 +51,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDrawer from 'react-drawer';
 
+/* if you using webpack, should not apply identity to this css */
+import 'react-drawer/lib/react-drawer.css';
+
 class Main extends React.Component {
   constructor() {
     super();
