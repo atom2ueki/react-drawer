@@ -23,7 +23,7 @@ var copyLib = new CopyPlugin([
 const CONFIG = {
   entry: path.join(PATH.src, 'ReactDrawer.js'),
   externals: {
-    'react': 'React'
+    'react': 'react'
   },
   devServer: {
     contentBase: PATH.root,
