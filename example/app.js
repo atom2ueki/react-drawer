@@ -6,9 +6,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDrawer from 'react-drawer';
-// import ReactDrawer from '../src/ReactDrawer';
-// var ReactDrawerComponent = ReactDrawer(React);
+import ReactDrawer from '../src/ReactDrawer';
 
 class Main extends React.Component {
   constructor() {
