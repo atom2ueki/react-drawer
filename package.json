@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/atom2ueki/react-drawer",
   "dependencies": {
-    "classnames": "^2.2.3"
+    "classnames": "^2.2.5"
   },
   "peerDependencies": {
     "react": "^0.14.7 || ^15.0.0"
