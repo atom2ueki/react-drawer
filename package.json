@@ -1,12 +1,12 @@
 {
   "name": "react-drawer",
-  "version": "1.2.3",
   "description": "react drawer menu",
   "main": "./lib/react-drawer.js",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
     "lint": "./node_modules/.bin/eslint src/",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -49,6 +49,7 @@
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
     "sass-loader": "^4.0.0",
+    "semantic-release": "^4.3.5",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.11",
