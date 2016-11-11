@@ -9,12 +9,14 @@ Simple HTML5 drawer menu for React.js.
 [![Quality][quality-badge] ][quality-url]
 [![dependencies][dependencies-image] ][dependencies-url]
 [![devdependencies][devdependencies-image] ][devdependencies-url]
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![semantic-release][semantic-release-image] ][semantic-release-url]
 
 [npm-icon]: https://nodei.co/npm/react-drawer.png?downloads=true
 [npm-url]: https://npmjs.org/package/react-drawer
-[travis-ci-image]: https://travis-ci.org/jmfrancois/react-drawer.svg?branch=master
-[travis-ci-url]: https://travis-ci.org/jmfrancois/react-drawer
+[travis-ci-image]: https://travis-ci.org/atom2ueki/react-drawer.svg?branch=master
+[travis-ci-url]: https://travis-ci.org/atom2ueki/react-drawer
+[semantic-release-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
 
 [dependencies-image]: https://david-dm.org/atom2ueki/react-drawer/status.svg
 [dependencies-url]: https://david-dm.org/atom2ueki/react-drawer
