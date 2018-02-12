@@ -26,7 +26,8 @@
     "classnames": "^2.2.5"
   },
   "peerDependencies": {
-    "react": "^0.14.7 || ^15.0.0"
+    "react": "^0.14.7 || ^15.0.0",
+    "prop-types": "^15.5.2"
   },
   "devDependencies": {
     "animate.css": "^3.5.1",

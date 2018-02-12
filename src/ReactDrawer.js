@@ -8,6 +8,7 @@
 import theme from './ReactDrawer.scss';
 import animate from 'animate.css';
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 
@@ -144,10 +145,10 @@ class ReactDrawer extends React.Component {
 }
 
 ReactDrawer.propTypes = {
-  open: React.PropTypes.bool.isRequired,
-  onClose: React.PropTypes.func,
-  position: React.PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
-  noOverlay: React.PropTypes.bool
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func,
+  position: PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
+  noOverlay: PropTypes.bool
 };
 
 // ReactDrawer.defaultProps = {
