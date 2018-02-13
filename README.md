@@ -26,6 +26,14 @@ Simple HTML5 drawer menu for React.js.
 [quality-badge]: http://npm.packagequality.com/shield/react-drawer.svg
 [quality-url]: http://packagequality.com/#?package=react-drawer
 
+New Planing
+============
+On the way: 
+- update all dependencies libraries
+- prepare supporting for React 16
+
+for React 15 use `"react-drawer": "^1.3.0"`
+for React 16 use `"react-drawer": "^2.0.0"` (not release yet)
 
 Installation
 ============

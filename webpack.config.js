@@ -15,18 +15,16 @@ const sass = `${css}!sass`;
 const extractCSS = new ExtractTextPlugin('react-drawer.css', {allChunks: true});
 const uglify = new webpack.optimize.UglifyJsPlugin();
 
-
 var copyLib = new CopyPlugin([
-  { from: 'lib', to: 'lib' },
-  { from: 'coverage/lcov-report', 'to': 'coverage'}
+  { from: 'lib', to: 'lib' }
 ]);
 const CONFIG = {
   entry: path.join(PATH.src, 'ReactDrawer.js'),
   externals: {
-    'react': 'react'
+    'react': 'React'
   },
   devServer: {
-    contentBase: PATH.root,
+    contentBase: PATH.example,
     inline: true,
     port: 3000
   },
