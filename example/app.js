@@ -4,9 +4,10 @@
  * all right reserved by @author Tony Li
  *
  */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDrawer from '../src/ReactDrawer';
+import ReactDrawer from '../lib/react-drawer';
 
 class Main extends React.Component {
   constructor() {

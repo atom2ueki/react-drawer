@@ -1,5 +1,5 @@
 /*!
- * drawer.css
+ * drawer.scss
  * Licensed under the MIT license
  *
  * Copyright (c) 2016 Tony Li
@@ -9,7 +9,7 @@ $size: 300px;
 
 .drawer {
   position: fixed;
-  background-color: #FFF;
+  background-color: #96CA4E;
   -webkit-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
   -moz-box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);
   box-shadow: -5px 0px 5px -5px rgba(0,0,0,0.55);

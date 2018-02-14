@@ -56,6 +56,16 @@ Demo
 ============
 https://jmfrancois.github.io/react-drawer/
 
+Development
+============
+``` bash
+// 1. keep monitor changes to /src/*
+npm run build:watch
+// 2. open dev server
+npm start
+// 3. visit http://localhost:3000/example/
+```
+
 Example
 =====
 

@@ -151,9 +151,4 @@ ReactDrawer.propTypes = {
   noOverlay: PropTypes.bool
 };
 
-// ReactDrawer.defaultProps = {
-//   open: false, // default status of the drawer
-//   transform: 0 // 0: inital close, 1: from open to close, 2: from close to open
-// };
-
 export default ReactDrawer;
