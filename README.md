@@ -50,6 +50,7 @@ Create a standalone module using *WebPack*:
 ```
 > npm install
 > webpack
+
 ```
 
 Demo
@@ -60,10 +61,13 @@ Development
 ============
 ``` bash
 // 1. keep monitor changes to /src/*
-npm run build:watch
+> npm run build:watch
+
 // 2. open dev server
-npm start
+> npm start
+
 // 3. visit http://localhost:3000/example/
+
 ```
 
 Example
