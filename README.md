@@ -34,8 +34,8 @@ On the way:
 
 Versioning
 ============
-- for React 15 use `"react-drawer": "^1.3.0"`
-- for React 16 use `"react-drawer": "^2.0.0"` (not release yet)
+- for React >= 15.5 use `"react-drawer": "^1.3.0"`
+- for React >= 16 use `"react-drawer": "^2.0.0"` (not release yet)
 
 Installation
 ============
@@ -57,7 +57,7 @@ Demo
 ============
 https://jmfrancois.github.io/react-drawer/
 
-Development
+Run on your local & development
 ============
 ``` bash
 // 1. keep monitor changes to /src/*
