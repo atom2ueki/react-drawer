@@ -1,26 +1,31 @@
 /*eslint no-unused-vars: ["error", {varsIgnorePattern: "React[Drawer]*"}]*/
 import React from 'react';
 import ReactDrawer from './ReactDrawer';
-import { shallow } from 'enzyme';
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe('ReactDrawer', () => {
 
   it('should display an overlay and a drawer', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     expect(wrapper.find('.react-drawer-overlay').length).toBe(1);
     expect(wrapper.find('.react-drawer-drawer').length).toBe(1);
   });
+
   it('with noOverlay should display a drawer', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open noOverlay />
     );
     expect(wrapper.find('.react-drawer-overlay').length).toBe(0);
     expect(wrapper.find('.react-drawer-drawer').length).toBe(1);
   });
+
   it('should onAnimationEnded change the state', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     const instance = wrapper.instance();
@@ -29,13 +34,14 @@ describe('ReactDrawer', () => {
     instance.onAnimationEnded();
     expect(instance.state.hiddenOverlay).toBe(true);
   });
+
   it('should componentWillMount set initial state from props', () => {
-    let wrapper = shallow(
+    let wrapper = mount(
       <ReactDrawer open={false} />
     );
     let instance = wrapper.instance();
     expect(instance.state.open).toBe(false);
-    wrapper = shallow(
+    wrapper = mount(
       <ReactDrawer open />
     );
     instance = wrapper.instance();
@@ -43,8 +49,9 @@ describe('ReactDrawer', () => {
     expect(instance.state.hiddenOverlay).toBe(true);
     expect(instance.state.hiddenDrawer).toBe(true);
   });
+
   it('should closeDrawer set some state', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     const instance = wrapper.instance();
@@ -52,9 +59,10 @@ describe('ReactDrawer', () => {
     instance.closeDrawer();
     expect(instance.state.open).toBe(false);
   });
+
   it('should closeDrawer call onClose', () => {
     const onClose = jest.fn();
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open onClose={onClose}/>
     );
     const instance = wrapper.instance();
@@ -62,8 +70,9 @@ describe('ReactDrawer', () => {
     instance.closeDrawer();
     expect(onClose.mock.calls.length).toBe(1);
   });
+
   it('should openDrawer set some state', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open={false} />
     );
     const instance = wrapper.instance();
@@ -72,8 +81,9 @@ describe('ReactDrawer', () => {
     expect(instance.state.hiddenDrawer).toBe(false);
     expect(instance.state.open).toBe(true);
   });
+
   it('should componentWillReceiveProps call openDrawer/closeDrawer', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open={false} />
     );
     const instance = wrapper.instance();
@@ -88,8 +98,9 @@ describe('ReactDrawer', () => {
     instance.componentWillReceiveProps({open: false});
     expect(instance.closeDrawer.mock.calls.length).toBe(1);
   });
+
   it('should componentDidMount add an event listener', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     const instance = wrapper.instance();
@@ -103,8 +114,9 @@ describe('ReactDrawer', () => {
     expect(calls[0][0]).toBe('webkitAnimationEnd');
     expect(calls[0][1]).toBe(instance.onAnimationEnded);
   });
+
   it('should componentWillUnmount remove an event listener', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     const instance = wrapper.instance();
@@ -118,6 +130,7 @@ describe('ReactDrawer', () => {
     expect(calls[0][0]).toBe('webkitAnimationEnd');
     expect(calls[0][1]).toBe(instance.onAnimationEnded);
   });
+
   it('should getOverlayClassName return class', () => {
     const theme = {
       overlay: 'test-overlay',
@@ -127,7 +140,7 @@ describe('ReactDrawer', () => {
       'fadeIn': 'test-fadeIn',
       'fadeOut': 'test-fadeOut'
     };
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     const instance = wrapper.instance();
@@ -147,6 +160,7 @@ describe('ReactDrawer', () => {
     c = instance.getOverlayClassName(theme, animate).split(' ');
     expect(c.indexOf('test-hidden')).toBe(-1);
   });
+
   it('should getDrawerClassName return class', () => {
     const theme = {
       drawer: 'test-drawer',
@@ -166,7 +180,7 @@ describe('ReactDrawer', () => {
       'fadeOutLeft': 'test-fadeOutLeft',
       'fadeOutRight': 'test-fadeOutRight'
     };
-    const wrapper = shallow(
+    const wrapper = mount(
       <ReactDrawer open />
     );
     let instance = wrapper.instance();

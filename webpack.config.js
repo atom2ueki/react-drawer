@@ -16,7 +16,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
   sourceMap: true,
   minimize: true,
   compress: {
-    warnings: true
+    warnings: false
   }
 });
 
