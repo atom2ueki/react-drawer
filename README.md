@@ -1,4 +1,4 @@
-react-drawer
+react-drawer (1.3.3)
 ==============
 
 Simple HTML5 drawer menu for React.js.
@@ -25,8 +25,6 @@ Simple HTML5 drawer menu for React.js.
 
 [quality-badge]: http://npm.packagequality.com/shield/react-drawer.svg
 [quality-url]: http://packagequality.com/#?package=react-drawer
-
-## Now Support React 16.2 on version ~1.3.2
 
 Installation
 ============
