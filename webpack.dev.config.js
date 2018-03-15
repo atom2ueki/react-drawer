@@ -12,7 +12,7 @@ const example = {
     path: PATH.example
   },
   externals: {
-    'react': 'React',
+    'react': 'react',
     'react-dom': 'ReactDOM',
     'react-drawer': 'ReactDrawer'
   },

@@ -23,7 +23,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
 const CONFIG = {
   entry: path.join(PATH.src, 'ReactDrawer.js'),
   externals: {
-    'react': 'React'
+    'react': 'react'
   },
   devServer: {
     contentBase: PATH.root,
