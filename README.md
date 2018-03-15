@@ -1,4 +1,4 @@
-react-drawer (1.3.3)
+react-drawer (1.3.4)
 ==============
 
 Simple HTML5 drawer menu for React.js.
