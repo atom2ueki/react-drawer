@@ -41,13 +41,15 @@ describe('ReactDrawer', () => {
     );
     let instance = wrapper.instance();
     expect(instance.state.open).toBe(false);
+    expect(instance.state.hiddenOverlay).toBe(true);
+    expect(instance.state.hiddenDrawer).toBe(true);
     wrapper = mount(
       <ReactDrawer open />
     );
     instance = wrapper.instance();
     expect(instance.state.open).toBe(true);
-    expect(instance.state.hiddenOverlay).toBe(true);
-    expect(instance.state.hiddenDrawer).toBe(true);
+    expect(instance.state.hiddenOverlay).toBe(false);
+    expect(instance.state.hiddenDrawer).toBe(false);
   });
 
   it('should closeDrawer set some state', () => {
@@ -145,11 +147,11 @@ describe('ReactDrawer', () => {
     );
     const instance = wrapper.instance();
     let c = instance.getOverlayClassName(theme, animate).split(' ');
-    expect(c.length).toBe(4);
+    expect(c.length).toBe(3);
     expect(c.indexOf('react-drawer-overlay')).not.toBe(-1);
     expect(c.indexOf('test-overlay')).not.toBe(-1);
     expect(c.indexOf('test-fadeIn')).not.toBe(-1);
-    expect(c.indexOf('test-hidden')).not.toBe(-1);
+    expect(c.indexOf('test-hidden')).toBe(-1);
 
     instance.state.open = false;
     c = instance.getOverlayClassName(theme, animate).split(' ');
@@ -185,10 +187,10 @@ describe('ReactDrawer', () => {
     );
     let instance = wrapper.instance();
     let c = instance.getDrawerClassName(theme, animate).split(' ');
-    expect(c.length).toBe(5);
+    expect(c.length).toBe(4);
     expect(c.indexOf('react-drawer-drawer')).not.toBe(-1);
     expect(c.indexOf('test-drawer')).not.toBe(-1);
-    expect(c.indexOf('test-hidden')).not.toBe(-1);
+    expect(c.indexOf('test-hidden')).toBe(-1);
     expect(c.indexOf('test-fadeInUp')).toBe(-1);
     expect(c.indexOf('test-fadeInRight')).not.toBe(-1);
     expect(c.indexOf('test-fadeInDown')).toBe(-1);

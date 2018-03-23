@@ -32,8 +32,8 @@ class ReactDrawer extends React.Component {
   componentWillMount() {
     this.setState({
       open: this.props.open,
-      hiddenOverlay: true,
-      hiddenDrawer: true
+      hiddenOverlay: !this.props.open,
+      hiddenDrawer: !this.props.open
     });
   }
 
