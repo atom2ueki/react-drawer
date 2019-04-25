@@ -3,6 +3,8 @@ react-drawer (1.3.4)
 
 Simple HTML5 drawer menu for React.js.
 
+[![996.ICU](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) 
+
 [![NPM][npm-icon] ][npm-url]
 
 [![Travis CI][travis-ci-image] ][travis-ci-url]
